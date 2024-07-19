@@ -12,7 +12,7 @@ class PortfolioCategory(models.Model):
 class Portfolio(models.Model):
     image = models.ImageField(upload_to='portfolio/images')
     category = models.ForeignKey(PortfolioCategory,on_delete=models.CASCADE)
-    url = models.URLField(default='https://github.com/asilbek-ismoilov?tab=repositories')
+    url = models.URLField(default='https://github.com/aminjoncls01?tab=repositories')
     date = models.DateField(auto_now=True)
     title = models.CharField(max_length=70)
     size = models.CharField(max_length=20, default='col-lg-5')

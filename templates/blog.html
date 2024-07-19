@@ -31,7 +31,7 @@
                 <div class="mil-pos-abs mil-animation-2">
                     <div class="mil-reveal-frame">
                         <p class="mil-reveal-box"></p>
-                        <p class="mil-h3 mil-muted mil-thin">ashley.com</p>
+                        <p class="mil-h3 mil-muted mil-thin">Aminjon ning sytiga xushkelibsiz</p>
                     </div>
                 </div>
             </div>
@@ -191,10 +191,17 @@
 
                                     <ul class="mil-category-list">
                                         {% for category in categories %}
-                                        <li><a href="#">{{category.name}}</a></li>
+                                        {% if curr_category == category.id%}
+                                        <li><a href="?category={{category.id}}" class="mil-active">{{category.name}}</a></li>
+                                        {% else %}
+                                        <li><a href="?category={{category.id}}" class="mil">{{category.name}}</a></li>
+                                        {% endif %}
                                         {% endfor %}
+                                        {% if curr_category == category.id%}                                        
                                         <li><a href="#" class="mil-active">All categories</a></li>
-                                        
+                                        {% else %}
+                                        <li><a href="#" class="mil">All categories</a></li>
+                                        {% endif %}
                                     </ul>
                                 </div>
                             </div>

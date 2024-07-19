@@ -55,6 +55,12 @@ class BlogDetailView(HitCountDetailView):
 import math
 
 def blog_view(request):
+    a = request.GET.get("category")
+    if a:
+        a = int(a)
+        blogs = Blog.objects.filter(category_id=int(a)).order_by('-created_date')
+    else:
+        blogs = Blog.objects.all().order_by('-created_date')
     blogs = Blog.objects.all()
     blog_count = len(blogs)
     count_obj = 5
@@ -68,7 +74,7 @@ def blog_view(request):
     popular_blogs = blogs
     sorted(popular_blogs,key=lambda x:x.hit_count.hits,reverse=True)
 
-    context = {"categories":categories,'popular_blogs':popular_blogs[:2],'page_obj':page_obj,'page_count':range(1,1+page_count),'page':int(page)}
+    context = {"categories":categories,'popular_blogs':popular_blogs[:2],'page_obj':page_obj,'page_count':range(1,1+page_count),'page':int(page),'curr_category':a}
     return render(request, 'blog.html',context)
 
 def home_view(request): 
